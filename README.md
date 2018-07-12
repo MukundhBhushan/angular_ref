@@ -1,8 +1,8 @@
 # angular_ref
 angular forms, cli, routing, observables 
 
-angular notes
-  -> angular cli
-  -> angular complete
-  -> angular HTTP Observable
-  -> angular forms
+angular notes <br>
+  -> angular cli<br>
+  -> angular complete<br>
+  -> angular HTTP Observable<br>
+  -> angular forms<br>
