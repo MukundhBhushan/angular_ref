@@ -8,7 +8,7 @@ angular notes
  <li>angular HTTP Observable</li>
   <li>angular forms</li>
 </ul>
-<br><br>
+<br>
 angular helper
 <ul>
  <li>ngrx</li>
