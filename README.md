@@ -3,13 +3,13 @@ angular forms, cli, routing, observables
 
 angular notes
 <ul>
- angular cli
- angular complete
- angular HTTP Observable
-  angular forms
+ <li>angular cli</li>
+ <li>angular complete</li>
+ <li>angular HTTP Observable</li>
+  <li>angular forms</li>
 </ul>
-
+<br><br>
 angular helper
 <ul>
- ngrx
+ <li>ngrx</li>
 </ul>
