@@ -89,3 +89,23 @@
             StoreModule.forRoot({
                 tutorial: <reducer name>
             })
+                         
+//create component
+    import { Observable } from 'rxjs/Observable';
+    import { Store } from '@ngrx/store';
+    import { <model interface name> } from '<model <interface name> location>';
+    import { AppState } from '<appstate file location>';
+
+    export class <component name> implements OnInit {
+
+        // Section 1
+        <var name>: Observable<<data type/interface>[]>;
+      
+        // Section 2
+        constructor(private store: Store<AppState>) { 
+          this.<var name> = store.select('<name as in app.module.ts under forroot>');
+        }
+      
+        ngOnInit() {}
+      
+      }
