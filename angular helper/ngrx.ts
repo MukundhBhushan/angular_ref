@@ -91,21 +91,52 @@
             })
                          
 //create component
-    import { Observable } from 'rxjs/Observable';
-    import { Store } from '@ngrx/store';
-    import { <model interface name> } from '<model <interface name> location>';
-    import { AppState } from '<appstate file location>';
+//new component for each
 
-    export class <component name> implements OnInit {
+    //read component--->
+        import { Observable } from 'rxjs/Observable';
+        import { Store } from '@ngrx/store';
+        import { <model interface name> } from '<model <interface name> location>';
+        import { AppState } from '<appstate file location>';
 
-        // Section 1
-        <var name>: Observable<<data type/interface>[]>;
-      
-        // Section 2
-        constructor(private store: Store<AppState>) { 
-          this.<var name> = store.select('<name as in app.module.ts under forroot>');
+        export class <component name> implements OnInit {
+
+            // Section 1
+            <var name>: Observable<<data type/interface>[]>;
+        
+            // Section 2
+            constructor(private store: Store<AppState>) { 
+            this.<var name> = store.select('<name as in app.module.ts under forroot>');
+            }
+        
+            ngOnInit() {}
+        
         }
-      
-        ngOnInit() {}
-      
-      }
+    
+    //write component--->
+        //create component
+        import { Component, OnInit } from '@angular/core';
+        import { Store } from '@ngrx/store';
+        import { AppState } from '<AppState file location>';
+        import { <model interface name> } from '<model interface name file location>'
+        import * as <psudo name for action> from 'action file location';
+        import { Observable } from 'rxjs/Observable';
+
+        export class CreateComponent implements OnInit {
+
+            constructor(private store: Store<AppState>) {}
+          
+            <function name>(arg1,arg2) {  
+              this.store.dispatch(new <psudo name for action>.<export class name to execute>({
+                  value1:arg1,
+                  value1:arg2
+              }) )
+            }
+          
+            ngOnInit() {
+            }
+          
+          }
+                    //to call function in html
+                    <button (click)="<function name>(args.value)">Add</button>
+    
