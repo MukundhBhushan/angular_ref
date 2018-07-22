@@ -18,6 +18,15 @@ ng new <project name> --dry-run //shows all the files going to be created, none 
 ng new <project name> --style scss // for creating sass instead of plain css
 ng new --help //for help
 
+<----adding package------>
+ng add <package name>
+
+//making angular project into pwa
+ ng add @angular/pwa
+//adding bootstrap
+ ng add @ng-bootstrap/schematics
+//for more
+ https://blog.angular.io/version-6-of-angular-now-available-cc56b0efa7a4
 
 <---------------blueprints------------------------>
 <------modules------>
