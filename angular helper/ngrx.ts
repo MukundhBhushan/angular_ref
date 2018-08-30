@@ -1,5 +1,7 @@
 //pakages installation
     npm install @ngrx/store --save
+    npm install @ngrx/effects --save 
+
 
 <-----in app.module.ts---->
     //import statement
@@ -10,7 +12,7 @@
             StoreModule.forRoot{<Reducers>,{}}
         ]
 
-//under the src/app folder create new folders called models, actions, reducer
+//under the src/app folder create new folders called models, actions, reducer,effects
     //in models --->
         //create a new ts file for each new model
         //naming convention <model name>.model.ts
@@ -31,7 +33,10 @@
             //db action
             export const <function name for crud> /*eg:record_ADD*/  = '[<interface name>] <function name>'
             export const <function name for crud> /*eg:record_DEL*/  = '[<interface name>] <function name>'
-            
+                //<function name> -->
+                    Add
+                    Remove
+                
             
             export class <class name similar to function name for crud 1 > implements Action {
                 readonly type = <function name for crud>  //type used refrence function in switch
@@ -47,9 +52,9 @@
 
             export type Actions= <class name similar to function name for crud 1 > | <class name similar to function name for crud 2 >
     
-    //in actions --->
-        //naming convention <actions name>.actions.ts
-        //in <actions name>.actions.ts --->
+    //in reducer --->
+        //naming convention <reducer name>.reducer.ts
+        //in <reducer name>.reducer.ts --->
             import { Action } from '@ngrx/store'
             import { <interface name> } from '<interface name> model file location'
             import * as <psudo action name> from 'action file name'
@@ -58,15 +63,17 @@
             name: 'Initial <some name>',
             url: 'http://<url>'
         }
-
-        export function <reducer name>(state: <data type / interface name>[] = [initialState], action: <psudo action name>.Actions){
-            switch(action.type){
-                case <psudo action name>.<function name for crud in actions.ts file>:
-                    return [...state, action.payload];
-
-                case <psudo action name>.<function name for crud in actions.ts file>:
-                    return [...state, action.payload];
+        export type Actions = <psudo action name>.All
+        export function <reducer name>(state: <data type / interface name>[] = [initialState], action: Actions){
+            switch(action.type) {
+                case <psudo action name>.<export const function name in Action.ts>:
+                    return {...state, action.payload,<property>:<value>};
                 
+                // Add this case:
+                case <psudo action name>.<export const function name in Action.ts>: //delete
+                    state.splice(action.payload, 1)
+                    return state;
+                    
                 default:
                     return state;
             }
@@ -87,9 +94,11 @@
 
         //in imports array
             StoreModule.forRoot({
-                tutorial: <reducer name>
+                <name>: <reducer name as in action.ts>
             })
-                         
+
+            <---------------CRUD--------------->
+
 //create component
 //new component for each
 
@@ -139,4 +148,24 @@
           }
                     //to call function in html
                     <button (click)="<function name>(args.value)">Add</button>
-    
+
+    //in the effects folder
+    //naming convention <effect name>.effect.ts
+    //in <effect name>.effect.ts --->
+        import { Injectable } from '@angular/core';
+        import { HttpClient } from '@angular/common/http';
+        import { Action } from '@ngrx/store';
+        import { Actions, Effect, ofType } from '@ngrx/effects';
+        import { Observable, of } from 'rxjs';
+        import { catchError, map, mergeMap } from 'rxjs/operators';
+
+        @Injectable()
+            export class <effect name> {
+                constructor(private action:Action,private db:<db instance>){}
+
+                @Effect()
+                <var name>:Observable<Action> = this.actions.ofType()
+
+
+             
+            }
