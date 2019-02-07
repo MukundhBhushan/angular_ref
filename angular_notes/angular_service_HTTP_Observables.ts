@@ -6,13 +6,14 @@ import {<service export class name>} from '<file location>'
 //in the @Ngmodule in the module.ts file in the providers array add the export class name in it
 
 //in the service.ts file under the export class write all the functions etc which the service should use
-		export class <service class name>(){
-			<function name>(<args>):Observable<return type>{
-			
-			}
-		
+	@Injectable
+	export class <service class name>(){
+		<function name>(<args>):Observable<return type>{
+
 		}
-		
+
+	}
+
 //to use the service
 // in the component.ts file import the service file
 //in the constructor
